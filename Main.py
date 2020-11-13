@@ -47,6 +47,15 @@ def getAssetInfo (file):
             if str(assetInfo) in row[0]:
                 return row
 
+def getLocation(location):
+    location = location.split()
+    if 'West' in location:
+        return location[0]
+    elif 'East' in location:
+        return location[0]
+    elif 'Downtown' in location:
+        return location[0]
+
 def buildDictionary (assetInfo):
     date = datetime.datetime.now()
     dateNow = str(date.month) + "-" + str(date.day) + "-" + str(date.year)
@@ -57,11 +66,12 @@ def buildDictionary (assetInfo):
     dictionary["PCC Number"] = assetInfo[0]
     dictionary["Serial Number"] = assetInfo[3]
     dictionary["Item Description"] = assetInfo[1] + " " + assetInfo[2]
-    dictionary["CampusSite"] = assetInfo[4]
+    location = getLocation(assetInfo[4])
+    dictionary["CampusSite"] = location
     dictionary["BuildingRoom"] = assetInfo[5]
     dictionary["Date Available for Pickup"] = dateNow
-    dictionary["CampusSite_2"] = input("What is the Transfer campus?: ")
-    dictionary["BuildingRoom_2"] = input("What is the Transfer Room?: ")
+    dictionary["CampusSite_2"] = input("What is the gaining campus?: ")
+    dictionary["BuildingRoom_2"] = input("What is the gaining Room?: ")
     dictionary["Gaining Custodian"] = input("Who is the Gaining Custodian?: ")
     return dictionary    
 
