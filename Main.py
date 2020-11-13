@@ -62,17 +62,17 @@ def buildDictionary (assetInfo):
 
     dictionary = {}
 
-    dictionary["Date"] = dateNow
-    dictionary["PCC Number"] = assetInfo[0]
-    dictionary["Serial Number"] = assetInfo[3]
-    dictionary["Item Description"] = assetInfo[1] + " " + assetInfo[2]
+    dictionary['Date'] = dateNow
+    dictionary['PCC Number'] = assetInfo[0]
+    dictionary['Serial Number'] = assetInfo[3]
+    dictionary['Item Description'] = assetInfo[1] + " " + assetInfo[2]
     location = getLocation(assetInfo[4])
-    dictionary["CampusSite"] = location
-    dictionary["BuildingRoom"] = assetInfo[5]
-    dictionary["Date Available for Pickup"] = dateNow
-    dictionary["CampusSite_2"] = input("What is the gaining campus?: ")
-    dictionary["BuildingRoom_2"] = input("What is the gaining Room?: ")
-    dictionary["Gaining Custodian"] = input("Who is the Gaining Custodian?: ")
+    dictionary['CampusSite'] = location
+    dictionary['BuildingRoom'] = assetInfo[5]
+    dictionary['Date Available for Pickup'] = dateNow
+    dictionary['CampusSite_2'] = input("What is the gaining campus?: ")
+    dictionary['BuildingRoom_2'] = input("What is the gaining Room?: ")
+    dictionary['Gaining Custodian'] = input("Who is the Gaining Custodian?: ")
     return dictionary    
 
 pdfOut = PdfFileWriter()
@@ -91,3 +91,5 @@ pdfOut.updatePageFormFieldValues(pdfOut.getPage(0), dictionary)
 
 outputStream = open(PROPERTY_CONTROL_OUTPUT, "wb")
 pdfOut.write(outputStream)
+
+print("!!PLEASE REVIEW FORM FOR DISCREPENCIES BEFORE PRINTING!!")
